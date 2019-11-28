@@ -1,0 +1,23 @@
+prioPreemptive
+QUANTUM 0
+0 Llega 1 prio 1
+5 Llega 2 prio 2
+10 Llega 3 prio 2
+15 startI/O 1 
+20 Llega 4 prio 3
+25 endI/O 1 
+30 startI/O 1 
+35 startI/O 2 
+40 Llega 5 prio 1
+45 Llega 6 prio 5
+50 Llega 7 prio 4
+55 Acaba 5 prio 1
+60 endI/O 1 
+65 endI/O 2 
+70 Acaba 1
+75 Acaba 2 
+80 Acaba 3 
+85 Acaba 4 
+90 Acaba 7 
+95 Acaba 6 
+FinSimulacion
