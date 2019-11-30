@@ -332,7 +332,7 @@ def prioScheduling(isPreemptive):
         #si si, se guarda el estado final y se termina la simulacion
         else:
             print(lineas[i+1].split()[0] + "\n")
-            guardarEstado(lineas[i+1].split()[0])
+            guardarEstado(lineas[i+1])
             break
             
     
