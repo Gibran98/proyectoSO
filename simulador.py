@@ -318,22 +318,31 @@ def prioScheduling(isPreemptive):
             else:
                 insertaListos(bloqueados.pop(indiceBloqueados), isPreemptive)
             print('Proceso ' + words[2] + ' endI/O' + ' en tiempo: ' + words[0])
+
+        #si se recibe un evento que no es reconocido por el simulador, este muestra un mensaje de error y no hace cambios en el estado del simulador, pero si transcurre el tiempo
+        else:
+            print('El simulador no reconoce el evento' + words[1])
         
         #despues de procesar el evento, se guarda el estado actual de las colas y el CPU
         guardarEstado(lineas[i])
         
         #se valida que la siguiente linea no sea la ultima
-        if lineas[i+1].split()[1] != 'FinSimulacion':
-            #si no, se calcula el tiempo transcurrido entre eventos y se le suma en el atributo apropiado a los procesos en la diferentes colas
-            tiempo = int(lineas[i+1].split()[0]) - int(words[0])
-            sumaListos(tiempo)
-            sumaBloqueados(tiempo)
-            sumaEnCPU(tiempo)
-        #si si, se guarda el estado final y se termina la simulacion
-        else:
-            print(lineas[i+1].split()[0] + "\n")
-            guardarEstado(lineas[i+1])
+        if i+1 >= len(lineas):
+            print('Se llegó al final de la entrada sin el evento de FinSimulación')
             break
+        else: 
+            #se valida si la siguiente linea marca el fin de la simulación
+            if lineas[i+1].split()[1] != 'FinSimulacion':
+                #si no, se calcula el tiempo transcurrido entre eventos y se le suma en el atributo apropiado a los procesos en la diferentes colas
+                tiempo = int(lineas[i+1].split()[0]) - int(words[0])
+                sumaListos(tiempo)
+                sumaBloqueados(tiempo)
+                sumaEnCPU(tiempo)
+            #si si, se guarda el estado final y se termina la simulacion
+            else:
+                print(lineas[i+1].split()[0] + "\n")
+                guardarEstado(lineas[i+1])
+                break
             
     
     
